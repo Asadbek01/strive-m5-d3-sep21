@@ -4,16 +4,19 @@ import express from "express" // <-- NEW IMPORT SYNTAX (Enabled with "type": "mo
 import listEndpoints from "express-list-endpoints"
 
 import usersRouter from "./services/users/index.js"
+import booksRouter from "./services/books/index.js"
 
 const server = express()
 
 const port = 3001 // every process on this computer needs to have a different port number
 
+// ******************** MIDDLEWARES ************************
 server.use(express.json()) // If you don't add this line BEFORE the endpoints all request bodies will be undefined
 
 // ******************** ENDPOINTS ***********************
 
 server.use("/users", usersRouter)
+server.use("/books", booksRouter)
 
 // console.log(listEndpoints(server))
 console.table(listEndpoints(server))
